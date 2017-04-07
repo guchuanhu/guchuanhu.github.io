@@ -13,7 +13,12 @@
             });*/
 
             $('body').on('click', '.med-autocomplete-item', function () {
+                console.log($(this));
+                console.log($(this).find('.tags'));
                 console.log($(this).find('.tags').data('keyword'));
+                $("#isshow").append($(this)+"<br />");
+                $("#isshow").append($(this).find('.tags')+"<br />");
+                $("#isshow").append($(this).find('.tags').data('keyword')+"<br />");
                 $("#div0").val($(this).find('.tags').data('keyword'));
             });
         });
@@ -21,9 +26,10 @@
     </script>
 </head>
 <body>
-<input type="text" id="div0" />
+<input type="text" id="div0" /><br /><br />
 <div class="med-autocomplete-item" id="showif">
     <span class="tags" data-keyword="分析">222222</span>
-</div>
+</div><br /><br />
+<div id="isshow"> </div>
 </body>
 </html>
