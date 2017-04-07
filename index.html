@@ -12,7 +12,7 @@
                 $("#showif").hide();
             });*/
 
-            $('body').on('click', '.med-autocomplete-item', function () {
+            $('body').on('touch', '.med-autocomplete-item', function () {
                 console.log($(this));
                 console.log($(this).find('.tags'));
                 console.log($(this).find('.tags').data('keyword'));
@@ -28,7 +28,7 @@
 <body>
 <input type="text" id="div0" /><br /><br />
 <div class="med-autocomplete-item" id="showif">
-    <span class="tags" data-keyword="分析">222222</span>
+    <span class="tags" data-keyword="分析">222222touch</span>
 </div><br /><br />
 <div id="isshow"> </div>
 </body>
