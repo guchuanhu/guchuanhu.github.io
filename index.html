@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
     <title>Title</title>
     <script src="//cdn.bootcss.com/jquery/1.11.2/jquery.min.js" type="text/javascript"></script>
+    <style>
+        .med-autocomplete-css{
+            cursor:pointer;
+        }
+    </style>
     <script>
         $(function(){
             /*$("#div0").keyup(function(){
@@ -31,6 +36,16 @@
                 $("#isshow").append($(this).find('.tags').data('keyword')+"<br />");
                 $("#div0").val($(this).find('.tags').data('keyword'));
             });
+
+            $('body').on('click', '.med-autocomplete-css', function () {
+                console.log($(this));
+                console.log($(this).find('.tags'));
+                console.log($(this).find('.tags').data('keyword'));
+                $("#isshow").append($(this)+"<br />");
+                $("#isshow").append($(this).find('.tags')+"<br />");
+                $("#isshow").append($(this).find('.tags').data('keyword')+"<br />");
+                $("#div0").val($(this).find('.tags').data('keyword'));
+            });
         });
 
     </script>
@@ -42,6 +57,9 @@
 </div><br /><br />
 <div class="med" id="showif">
     <span class="tags" data-keyword="222222med">222222med</span>
+</div><br /><br />
+<div class="med-autocomplete-css">
+    <span class="tags" data-keyword="222222med-autocomplete-css">222222med-autocomplete-css</span>
 </div><br /><br />
 <div id="isshow"> </div>
 </body>
