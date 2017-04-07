@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+    <title>Title</title>
+    <style>
+        #control{
+            margin: auto;
+            width: 240px;
+            height: 240px;
+        }
+        #control td{
+            width:80px;
+            height:80px;
+            text-align: center;
+            font-size: 24px;
+        }
+        #up,#right,#down,#left{
+            cursor: pointer;
+        }
+        #art{
+            margin: auto;
+        }
+        #art td{
+            width:100px;
+            height:100px;
+            text-align: center;
+            font-size: 24px;
+        }
+        .scoreShow{
+            width:100%;
+            margin:auto;
+            margin-bottom: 10px;
+        }
+        .scoreShow td{
+            text-align:center;
+            width:33.33%;
+        }
+        .shadow{
+            position: fixed;
+            background-color: #222;
+            width: 100%;
+            height: 100%;
+            top: 0;
+        }
+        .ball{
+            position:relative;
+            transform-origin: 0% 50%;
+            animation-name: ball;
+            animation-duration: 4s;
+            animation-timing-function: linear;
+            animation-direction: alternate;
+            animation-play-state: running;
+            animation-fill-mode:forwards;
+        }
+        .ball-up{
+            width:200px;
+            height:100px;
+            border-radius:100px 100px 0 0;
+            background:red;
+            transform-origin:0 100%;
+            /*transition: transform 4s;
+            transform:rotate(-55deg);*/
+            animation-name: myfirst;/*规定 @keyframes 动画的名称。*/
+            animation-duration: 4s;/*规定动画完成一个周期所花费的秒或毫秒。默认是 0。*/
+            animation-timing-function: linear;/*规定动画的速度曲线。默认是 "ease"。*/
+            /*animation-delay: 2s;*//*规定动画何时开始。默认是 0。*/
+            animation-direction: alternate;/*规定动画是否在下一周期逆向地播放。默认是 "normal"。*/
+            animation-play-state: running;/*规定动画是否正在运行或暂停。默认是 "running"。*/
+        }
+        @keyframes ball{
+            0%   {
+                transform: translate(0,0);
+            }
+             20%  {
+                 transform: translate(250px,-60px);
+             }
+             40%  {
+                 transform: translate(400px,160px) rotate(45deg);
+             }
+             60% {
+                 transform: translate(490px,-60px) rotate(-45deg);
+             }
+            80% {
+                transform: translate(690px,160px) rotate(45deg);
+            }
+            100% {
+                transform: translate(850px,-60px);
+            }
+         }
+        @keyframes myfirst{
+            0%   {
+                transform: rotate(-55deg);
+            }
+            20%  {
+                transform: rotate(0deg);
+            }
+            40%  {
+                transform: rotate(-55deg);
+            }
+            60% {
+                transform: rotate(0deg);
+            }
+            80% {
+                transform: rotate(-55deg);
+            }
+            100% {
+                transform: rotate(0deg);
+            }
+        }
+        .shadow-name{
+            font-size: 80px;
+            color:white;
+        }
+        .shadow-name span{
+            display: inline-block;
+            margin-right:80px;
+        }
+        .shadow-name2{
+            transform: translate(300px,100px);
+        }
+        .shadow-name0{
+            transform: translate(300px,300px);
+        }
+        .shadow-name4{
+            transform: translate(300px,100px);
+        }
+        .shadow-name8{
+            transform: translate(300px,300px);
+        }
+        .ball-down{
+            width:200px;
+            height:100px;
+            border-radius: 0 0 100px 100px;
+            background:white;
+        }
+        .ball-line{
+            height: 10px;
+            width: 200px;
+            background-color: black;
+        }
+        .ball-small{
+            position: absolute;
+            top: 87px;
+            left: 82px;
+            height: 40px;
+            width: 40px;
+            border-radius: 25px;
+            background-color: black;
+        }
+        .ball-small-small{
+            margin: auto;
+            margin-top: 7px;
+            height: 25px;
+            width: 25px;
+            border-radius: 25px;
+            background-color: white;
+        }
+    </style>
+    <script type="text/javascript" src="../lib/js/jquery-1.11.1.min.js" ></script>
+    <script>
+        $(function(){
+
+            var arr;
+
+            function arrayMaker(num){
+                var i,j,auto=[];
+                for(i=0;i<num;i++) {
+                    for(j=0;j<num;j++) {
+                        if(auto[i] === undefined){
+                            auto[i] = [];
+                        }
+                        auto[i][j]=0;
+                    }
+                }
+                return auto;
+            }
+
+            function tableMaker(len,item){//根据len生成item表单内容
+                var i,j,tableBody='',tableTr='';
+                for(i=0;i<len;i++) {
+                    tableTr += "<td></td>"
+                }
+                tableTr = "<tr>"+tableTr+"</tr>";
+                for(i=0;i<len;i++) {
+                    tableBody += tableTr;
+                }
+                $(item).html(tableBody);
+            }
+
+            var roll = function(){//上下左右执行数字累加
+                return {
+                    forLeftVertical:function(arr){
+                        var arrlike = [];
+                        for(var i=0 ;i<arr.length;i++){//规整 i 0->3
+                            for(var k=0;k<arr[i].length;k++){//  k 0->3
+                                if(!arrlike[k]){
+                                    arrlike[k] = [];
+                                }
+                                arrlike[i][k] = arr[k][i];
+                            }
+                        }
+                        arr = this.forUpRow(arrlike);
+
+                        for(var i=0 ;i<arr.length;i++){// i 0->3
+                            for(var k=0;k<arr[i].length;k++){//  k 0->3
+                                arrlike[i][k] = arr[k][i];//横向赋值给竖行
+                            }
+                        }
+
+                        return arrlike;
+                    },
+                    forRightVertical:function(arr){
+                        var arrlike = [];
+                        for(var i=0 ;i<arr.length;i++){//规整 i 0->3
+                            for(var k=0;k<arr[i].length;k++){//  k 0->3
+                                if(!arrlike[k]){
+                                    arrlike[k] = [];
+                                }
+                                arrlike[i][k] = arr[k][i];
+                            }
+                        }
+                        arr = this.forDownRow(arrlike);
+                        for(var i=0 ;i<arr.length;i++){//规整 i 0->3
+                            for(var k=0;k<arr[i].length;k++){//  k 0->3
+                                arrlike[k][i] = arr[i][k];
+                            }
+                        }
+                        return arrlike;
+                    },
+                    forDownRow:function(arr){
+                        arr = this.arrange(arr,true);
+                        for(i=0 ;i<arr.length;i++){
+                            for(k=arr[i].length;k>0;k--){
+                                if(arr[i][k]==arr[i][k-1]&&arr[i][k]!==0){
+                                    arr[i][k]+=arr[i][k-1];
+                                    arr[i].splice(k-1,1);
+                                    arr[i].unshift(0);
+                                }
+                            }
+                        }
+                        return arr;
+                    },
+                    forUpRow:function(arr){
+                        arr = this.arrange(arr,false);
+                        for(i=0 ;i<arr.length;i++){
+                            for(k=0;k<arr[i].length;k++){
+                                if(arr[i][k]==arr[i][k-1]&&arr[i][k]!==0){
+                                    arr[i][k]+=arr[i][k-1];
+                                    arr[i].splice(k-1,1);
+                                    arr[i].push(0);
+                                }
+                            }
+                        }
+                        return arr;
+                    },
+                    arrange:function(arr,down){
+                        var cloneArr = [],len;
+                        for(var i=0 ;i<arr.length;i++){//规整
+                            for(var k=0;k<arr[i].length;k++){
+                                if(!cloneArr[i]){cloneArr[i] = [];}
+                                if(arr[i][k]!==0){
+                                    cloneArr[i].push(arr[i][k]);
+                                }
+                            }
+                        }
+
+                        for(i=0 ;i<arr.length;i++){
+                            if(!cloneArr[i]){console.log(cloneArr,i);}
+                            len = arr.length - cloneArr[i].length;
+                            for(k=0;k<len;k++){
+                                if(down){
+                                    cloneArr[i].unshift(0);
+                                }else{
+                                    cloneArr[i].push(0);
+                                }
+                            }
+                        }
+                        return cloneArr;
+                    }
+                }
+            }();
+
+            var n,rgbOrg;
+
+            function showArr(it,arr){//展示结果
+                $(it).find("tr").each(function(i,tr){
+                    $(tr).find("td").each(function(j,td){//展示
+                        n = Math.log(arr[j][i])/Math.LN2>0?Math.log(arr[j][i])/Math.LN2:0;
+                        n = n>15?15:n;//n的范围0-15
+                        rgbOrg = ((15-n)/15)*230;
+
+                        $(td).css({"background-color":"rgb(250,"+parseInt(240-(230-rgbOrg)/2)+","+parseInt(rgbOrg)+")"})
+                            .text(arr[j][i]===0?'':arr[j][i]);
+                    });
+                });
+            }
+
+            var whichArr = [],score = 0;
+
+            function randomForArr(arr,index){//给arr随机生成index+1个4（20%）或2（80%）
+                if(index === undefined){
+                    if(arr.length>5){//矩阵长度大于5，每次操作增加2个
+                        index = 1;
+                    }
+                    if(arr.length>9){//矩阵长度大于9，每次操作增加4个
+                        index = 3;
+                    }
+                }
+
+                whichArr = [],score = 0;
+                for(var i=0;i<arr.length;i++){
+                    for(var j=0;j<arr[i].length;j++){
+                        if(arr[i][j]===0){
+                            whichArr.push({i:i,j:j});
+                        }
+                        score += arr[i][j];
+                    }
+                }
+                $("#score").text(score);
+
+                if(whichArr.length){
+                    a = whichArr[parseInt(whichArr.length*Math.random())];
+                    arr[a.i][a.j] = Math.random()>0.8?4:2;
+                }else{
+                    if(checkGameOk()){
+                        var firm = confirm(" 游戏结束！ \n \n 点击确定重新开始。 \n ");
+                        if(firm){
+                            setTimeout(function(){
+                                initGame(init);
+                            },0);
+                        }
+                    }
+                }
+                if(index&&whichArr.length){
+                    return randomForArr(arr,index-1);
+                }else{
+                    return arr;
+                }
+            }
+
+            function checkGameOk(){//检查游戏是否结束
+                for(var i=0;i<arr.length;i++){//相邻数，右下检查
+                    for(var j=0;j<arr.length;j++){
+                        if(arr[i][j]===arr[i][j+1] || arr[i][j]===(arr[i+1]?arr[i+1][j]:undefined)){
+                            return false;
+                        }
+                    }
+                }
+                return true;
+            }
+
+            function actionChoice(item){
+                var a;
+                switch(item){//根据dom的ID判断上下左右动作
+                    case "#up":
+                        arr = roll.forUpRow(arr);
+                        arr = randomForArr(arr);
+                        break;
+                    case "#right":
+                        arr = roll.forRightVertical(arr);
+                        arr = randomForArr(arr);
+                        break;
+                    case "#down":
+                        arr = roll.forDownRow(arr);
+                        arr = randomForArr(arr);
+                        break;
+                    case "#left":
+                        arr = roll.forLeftVertical(arr);
+                        arr = randomForArr(arr);
+                        break;
+                    default:
+                        console.log("绑定事件错误");
+                }
+                showArr("#art",arr);//展示结果
+            }
+
+            function bindClick(item,move,action){//绑定事件move给item，触发move后执行action
+                $(item).on(move,function(){
+                    action(item,this);
+                });
+            }
+
+            function initGame(initData){
+                $("#select").val(initData.arrLength);//给select赋值
+
+                arr = arrayMaker(initData.arrLength);
+
+                tableMaker(arr.length,initData.showTable);
+
+                arr = randomForArr(arr,initData.randomNum);
+
+                showArr(initData.showTable,arr);
+
+                bindClick("#up","click",actionChoice);
+                bindClick("#right","click",actionChoice);
+                bindClick("#down","click",actionChoice);
+                bindClick("#left","click",actionChoice);
+            }
+
+            var init = {
+                arrLength:3,//矩阵长度
+                randomNum:2,//初始数目
+                showTable:"#art"//展示到此table
+            };
+
+            initGame(init);
+
+            bindClick("#select","change",function(item,that){
+                initGame({
+                    arrLength:$(that).val(),
+                    randomNum:2,
+                    showTable:"#art"
+                });
+            });
+
+        });
+    </script>
+</head>
+<body>
+<div>
+    <table class="scoreShow">
+        <tr>
+            <td>&nbsp;</td>
+            <td>总分数：<span id="score"></span></td>
+            <td>
+                阶乘：
+                <select id="select">
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                </select>
+            </td>
+        </tr>
+    </table>
+    <table id="art"></table><br />
+    <table id="control">
+        <tr><td></td><td id="up">上</td><td></td></tr>
+        <tr><td id="left">左</td><td></td><td id="right">右</td></tr>
+        <tr><td></td><td id="down">下</td><td></td></tr>
+    </table>
+</div>
+<div class="shadow">
+    <div class="shadow-name">
+        <span class="shadow-name2">2</span>
+        <span class="shadow-name0">0</span>
+        <span class="shadow-name4">4</span>
+        <span class="shadow-name8">8</span>
+    </div>
+    <div class="ball">
+        <div class="ball-up"></div>
+        <div class="ball-line"><div class="ball-small"><div class="ball-small-small"></div></div></div>
+        <div class="ball-down"></div>
+    </div>
+</div>
+</body>
+</html>
