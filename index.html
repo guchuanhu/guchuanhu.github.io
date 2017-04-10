@@ -69,10 +69,8 @@
     <script type="text/javascript" src="//cdn.bootcss.com/jquery/1.11.2/jquery.min.js" ></script>
     <script>
         $(function(){
-
-            console.log(document.hasOwnProperty("ontouchstart"));
-            alert(document.hasOwnProperty("ontouchstart"));
-            document.write(document.hasOwnProperty("ontouchstart"));
+            console.log("ontouchend" in document);
+            alert("ontouchend" in document);
 
             var tsX,tsY,x,y;
 
