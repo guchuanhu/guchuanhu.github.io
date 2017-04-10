@@ -69,8 +69,12 @@
     <script type="text/javascript" src="//cdn.bootcss.com/jquery/1.11.2/jquery.min.js" ></script>
     <script>
         $(function(){
-            console.log("ontouchend" in document);
-            alert("ontouchend" in document);
+
+            if("ontouchend" in document){
+                $("#control").hide();
+            }else{
+                $("#control").show();
+            }
 
             var tsX,tsY,x,y;
 
