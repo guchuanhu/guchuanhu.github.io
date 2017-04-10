@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>获取图像颜色</title>
+    <style>
+        body {
+            text-align:center;
+        }
+        .info {
+            text-align:center;
+            font-size:36px;
+            line-height:36px;
+        }
+        #cursor{
+            position:absolute;
+            display:none;
+            height:11px;
+            width:11px;
+            background:url(images/cursor.png);
+        }
+        #art{
+            border-spacing: 0;
+            margin:20px;
+            padding:0;
+        }
+        #art td{
+            width:1px;
+            height:1px;
+            padding:0;
+            background-color:black;
+        }
+    </style>
+</head>
+
+<body>
+<canvas id="canvas" width="400px" height="286px">Sorry, your browser dose not support canvas.</canvas>
+<hr />
+<div class="info" id="currentColor">点击上面的canvas来查看效果</div>
+<div id="cursor"></div>
+
+<table id="art"></table>
+
+    <script type="text/javascript" src="//cdn.bootcss.com/jquery/1.11.2/jquery.min.js" ></script>
+<script>
+    if (typeof HTMLElement == 'undefined'){
+        var HTMLElement = function(){};
+        if (window.webkit) document.createElement("iframe"); //fixes safari
+        HTMLElement.prototype = (window.webkit) ? window["[[DOMElement.prototype]]"] : {};
+    }
+    HTMLElement.prototype.getPixelColor = function(x, y){
+        var thisContext = this.getContext("2d");
+        var imageData = thisContext.getImageData(x, y, 1, 1);
+        // 获取该点像素数据
+        var pixel = imageData.data;
+        var r = pixel[0];
+        var g = pixel[1];
+        var b = pixel[2];
+        var a = pixel[3] / 255
+        a = Math.round(a * 100) / 100;
+        var rHex = r.toString(16);
+        r < 16 && (rHex = "0" + rHex);
+        var gHex = g.toString(16);
+        g < 16 && (gHex = "0" + gHex);
+        var bHex = b.toString(16);
+        b < 16 && (bHex = "0" + bHex);
+        var rgbaColor = "rgba(" + r + "," + g + "," + b + "," + a + ")";
+        var rgbColor = "rgb(" + r + "," + g + "," + b + ")";
+        var hexColor = "#" + rHex + gHex + bHex;
+        return {
+            rgba : rgbaColor,
+            rgb : rgbColor,
+            hex : hexColor,
+            r : r,
+            g : g,
+            b : b,
+            a : a
+        };
+    }
+</script>
+<script type="text/javascript">
+
+    $(function(){
+
+        setTimeout(function(){
+            var rgbOrg;
+            $("#art").find("tr").each(function(i,tr){
+                $(tr).find("td").each(function(j,td){//展示
+                    rgbOrg = document.getElementById("canvas").getPixelColor(j,i).rgb;
+
+                    $(td).css({"background-color":rgbOrg});
+                });
+            });
+        },1000);
+    });
+
+
+
+    function tableMaker(x,y,item){//根据len生成item表单内容
+        var i,j,tableBody='',tableTr='';
+        for(i=0;i<x;i++) {
+            tableTr += "<td></td>"
+        }
+        tableTr = "<tr>"+tableTr+"</tr>";
+        for(i=0;i<y;i++) {
+            tableBody += tableTr;
+        }
+        $(item).html(tableBody);
+    }
+
+    $(document).ready(function () {
+        var img = new Image();
+        img.src = "../lib/img/websiteassesment_banner_half_0.jpg";
+        console.log($(img).width());
+        console.log(img.width);
+        console.log(img.height);
+
+        tableMaker(img.width,img.height,$("#art"));
+
+        $(img).load(function () {
+
+            var canvas = document.getElementById("canvas");
+            canvas.width = img.width;
+            canvas.height = img.height;
+
+            var context = canvas.getContext("2d");
+            context.shadowBlur = 20;
+            context.shadowColor = "#000000";
+            context.drawImage(img, 0, 0);
+        });
+    });
+</script>
+</body>
+</html>
