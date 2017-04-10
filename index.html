@@ -78,6 +78,10 @@
 
             var tsX,tsY,x,y;
 
+            $("body").on("touchmove",function(){
+                event.preventDefault();
+            });
+
             $("body").on("touchstart",function(){
                 tsX = event.changedTouches[0].clientX;
                 tsY = event.changedTouches[0].clientY;
