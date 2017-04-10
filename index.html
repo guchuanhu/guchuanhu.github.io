@@ -69,6 +69,9 @@
     <script type="text/javascript" src="//cdn.bootcss.com/jquery/1.11.2/jquery.min.js" ></script>
     <script>
         $(function(){
+
+            console.log($("#iptJc"));
+
             document.body.addEventListener('touchmove', function(event) {
                 event.preventDefault();
             }, false);
@@ -81,10 +84,6 @@
             }
 
             var tsX,tsY,x,y;
-
-            $("body").on("touchmove",function(){
-                event.preventDefault();
-            });
 
             $("body").on("touchstart",function(){
                 tsX = event.changedTouches[0].clientX;
@@ -339,7 +338,7 @@
             }
 
             function initGame(initData){
-                $("#select").val(initData.arrLength);//给select赋值
+                $("#iptJc").val(initData.arrLength);//给select赋值
 
                 arr = arrayMaker(initData.arrLength);
 
@@ -359,13 +358,20 @@
                 arrLength:3,//矩阵长度
                 randomNum:2,//初始数目
                 showTable:"#art"//展示到此table
-            };
+            },arrLenJc;
 
             initGame(init);
 
-            bindClick("#select","change",function(item,that){
+            bindClick("#iptJc","change",function(item,that){
+                console.log($(that).val());
+                if(typeof ($(that).val()-0) === "number"){
+                    arrLenJc = parseInt($(that).val());
+                }else{
+                    arrLenJc = init.arrLength;
+                }
+                console.log(arrLenJc);
                 initGame({
-                    arrLength:$(that).val(),
+                    arrLength:arrLenJc,
                     randomNum:2,
                     showTable:"#art"
                 });
@@ -375,23 +381,14 @@
     </script>
 </head>
 <body>
-<div>123
+<div>
     <table class="scoreShow">
         <tr>
             <td>&nbsp;</td>
             <td>总分数：<span id="score"></span></td>
             <td>
                 阶乘：
-                <select id="select">
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                    <option>6</option>
-                    <option>7</option>
-                    <option>8</option>
-                    <option>9</option>
-                    <option>10</option>
-                </select>
+                <input id="iptJc" type="text" value="3" />
             </td>
         </tr>
     </table>
