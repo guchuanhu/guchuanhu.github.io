@@ -1,0 +1,35 @@
+<style>
+    nav,panel{display:table;width:100%;padding: 15px 20px;border-bottom: 1px solid #ccc;background-color:white;}
+    nav navt{display:table-cell;width:33.33%;}
+
+    content photo{display:block;width: 70px;text-align: center;margin: auto;font-size: 50px;color: yellow;}
+    content name{display:block;text-align: center;color: #333;    padding-top: 20px;padding-bottom: 15px;font-size: 12px;font-weight: bold;}
+
+    content btn{display: block;margin: 20px;padding: 10px;text-align: center;background-color: #ffd450;}
+    content ul li{background-color:white;}
+    content li{padding: 10px 15px;border-bottom: 1px solid #ddd;}
+    content li right{float: right;color: #999;font-size: 14px;}
+    content li right .glyphicon,nav navt .glyphicon{top: 2px;}
+
+</style>
+
+<nav>
+    <navt><a href="#home"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>返回</a></navt>
+    <navt class="text-center">用户中心</navt>
+    <navt></navt>
+</nav>
+
+<content>
+
+    <panel>
+        <photo><span class="glyphicon glyphicon-user" aria-hidden="true"></span></photo>
+        <name>150***3567</name>
+    </panel>
+
+    <ul>
+        <li><a href="#my_wallet"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>&nbsp;<span>我的钱包</span><right>余额0元<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></right></a></li>
+        <li><span class="glyphicon glyphicon-comment" aria-hidden="true"></span>&nbsp;<span>我的消息</span><!--<right>1张<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></right>--></li>
+        <li><span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span>&nbsp;<span>使用指南</span><!--<right>1张<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></right>--></li>
+        <li><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>&nbsp;<span>我的设置</span><!--<right>1张<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></right>--></li>
+    </ul>
+</content>
