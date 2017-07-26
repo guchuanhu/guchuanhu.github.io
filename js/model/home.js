@@ -25,5 +25,14 @@ $(function(){
 		}
 		vipspa.setMessage(msg);
 		location.hash = 'content';
-	})
+	});
+	
+	$.sliderForUs({
+            id:"slider1",
+            tips:["验证成功","向右滑动验证"],
+            style:"slider-auth",
+            success:function(){
+                alert("You are allowed to pass!");
+            }
+        }).init();
 })
