@@ -1,27 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=GBK">
-
+    <meta charset="gbk">
     <meta http-equiv="cache-control" content="no-cache">
     <meta content="telephone=no" name="format-detection">
     <meta name="viewport" content="width=device-width,user-scalable=no,maximum-scale=1,minimum-scale=1">
-    <title>鎻愪氦璁㈠崟</title>
-    <link rel="stylesheet" href="../css/bootstrap-grid.css">
-    <style>
-        html{height: 100%;overflow: hidden;}
-        body{height: 100%;overflow: auto;}
-    </style>
+    <title>登陆 - 修狗工程师后台系统</title>
+    <link href="../css/engineerLogin.css" rel="stylesheet" type="text/css">
+    <link rel="icon" href="http://www.xgo.cn/images/icon.png">
 </head>
 <body>
-<div class="container">
-    <div class="row">
-        <div class="col-xs-3">杈撳叆鍚嶇О</div>
-        <div class="col-xs-6">
-            <input style="width:4.6875rem;" type="text" placeholder="鍝堝搱鍝�">
+<form action="">
+    <div class="wrapper">
+        <input type="text" name="username" placeholder="请输入您的用户名" class="user-name">
+        <div class="password-box">
+            <input type="password" name="password" placeholder="密码" class="user-password">
+            <a href="javascript:;" class="clear-password">清除密码</a>
         </div>
+        <div class="clearfix about-password">
+            <a href="javascript:;" class="remember">记住密码</a>
+        </div>
+        <input type="button" class="login-btn" value="登录">
+        <input type="hidden" name="remember" class="remember-me" value="0">
+        <input type="hidden" name="remember" class="submitToken" value="fc651a70ca98e6818944935ca606615f">
     </div>
-</div>
-</body>
+</form>
+<div class="repair-bg-wrong-tip">密码不能为空</div>
+<script type="text/javascript" src="../js/zepto.min.js" charset="gbk"></script>
+<script type="text/javascript" src="../js/formValidation.js" charset="gbk"></script>
+<script type="text/javascript" src="../js/login.js" charset="gbk"></script>
 <script src="../js/rem.js"></script>
+</body>
 </html>
