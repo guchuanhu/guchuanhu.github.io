@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="gbk">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="viewport" content="width=device-width,user-scalable=no,maximum-scale=1,minimum-scale=1">
+    <title>登陆 - 修狗工程师后台系统</title>
+    <link href="../css/engineerLogin.css" rel="stylesheet" type="text/css">
+    <link rel="icon" href="http://www.xgo.cn/images/icon.png">
+    <style>
+        h1{font-size: 40px;}
+        li{    border-bottom: 1px solid black;}
+    </style>
+</head>
+<body>
+<ul id="ul0">
+    <li><h1>1</h1></li>
+    <li><h1>2</h1></li>
+    <li><h1>3</h1></li>
+    <li><h1>4</h1></li>
+    <li><h1>5</h1></li>
+
+    <li><h1>6</h1></li>
+    <li><h1>7</h1></li>
+    <li><h1>8</h1></li>
+    <li><h1>9</h1></li>
+    <li><h1>10</h1></li>
+
+    <li><h1>11</h1></li>
+    <li><h1>12</h1></li>
+    <li><h1>13</h1></li>
+    <li><h1>14</h1></li>
+    <li><h1>15</h1></li>
+</ul>
+<div id="div0" style="background-color: white;display: none;">666</div>
+<script type="text/javascript" src="../js/zepto.min.js" charset="gbk"></script>
+<script type="text/javascript" src="../js/formValidation.js" charset="gbk"></script>
+<script type="text/javascript" src="../js/lists.js" charset="gbk"></script>
+<script src="../js/rem.js"></script>
+<script>
+    $('body').on("touchmove",getdata);
+    $(document).on("scroll",getdata);
+    function getdata() {
+        if ($(window).scrollTop() >= $(document).height() - $(window).height() && $("#div0").css("display")==="none") {
+            $("#div0").show();
+            setTimeout(function () {
+                $("#ul0").append("<li><h1>"+Math.random()+"</h1></li>");
+                $("#div0").hide();
+            },3000);
+
+        }
+    }
+</script>
+</body>
+</html>
