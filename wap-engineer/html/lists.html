@@ -68,10 +68,12 @@
 <script type="text/javascript" src="../js/lists.js" charset="gbk"></script>
 <script src="../js/rem.js"></script>
 <script>
-    $("#fakerstar").on("focus",function () {
+    $("#fakerstar").on("touch",function () {
         $("#div0").show().append("focus");
-    }).on("blur",function () {
-        $("#div0").append($(this).val());
+    }).on("touchmove",function () {
+        $("#div0").show().append("touchmove");
+    }).on("change",function () {
+        $("#div0").show().append("change");
     })
 
 
