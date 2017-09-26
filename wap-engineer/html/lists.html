@@ -66,7 +66,7 @@
         <span>上门时间</span>
         <label class="timeposi">
             <input id="fakerstar" class="timefaker" type="datetime-local" value="123" placeholder="6666">
-            <span class="timefaker plar">请选择开始时间</span>
+            <span id="fakerstarplar" class="timefaker plar">请选择开始时间</span>
         </label>
     </li>
 </ul>
@@ -76,12 +76,13 @@
 <script type="text/javascript" src="../js/lists.js" charset="gbk"></script>
 <script src="../js/rem.js"></script>
 <script>
-    $("#fakerstar").on("touch",function () {
-        $("#div0").show().append("focus");
-    }).on("touchmove",function () {
-        $("#div0").show().append("touchmove");
-    }).on("change",function () {
-        $("#div0").show().append("change");
+    $("#fakerstar").on("change",function () {
+        if($(this).val()){
+            $("#fakerstarplar").hide();
+        }else {
+            $("#fakerstarplar").show();
+        }
+
     })
 
 
