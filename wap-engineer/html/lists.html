@@ -69,9 +69,9 @@
 <script src="../js/rem.js"></script>
 <script>
     $("#fakerstar").on("focus",function () {
-        alert(this);
+        $("#div0").show().append("focus");
     }).on("blur",function () {
-        alert($(this).val());
+        $("#div0").append($(this).val());
     })
 
 
