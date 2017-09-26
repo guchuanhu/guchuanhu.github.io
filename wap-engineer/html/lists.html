@@ -27,6 +27,8 @@
         .main_lists{font-size: 0.4rem;background-color: white;}
         .main_lists li{padding: 0.32rem 0.26666rem;}
         .timefaker{width:3.866rem;height: 0.8266rem;background-color: #f9f9f9;color: #989898;}
+        .timeposi{position: relative;}
+        .timeposi .plar{display: inline-block;line-height: 0.8266rem;position: absolute;left: 0;box-sizing: border-box;padding-left: 0.12rem;width: 3rem;}
     </style>
 </head>
 <body>
@@ -60,7 +62,13 @@
     <li>服务完成</li>
 </ul>
 <ul class="main_lists">
-    <li>上门时间 <input id="fakerstar" class="timefaker" type="datetime-local" value="123" placeholder="6666"></li>
+    <li>
+        <span>上门时间</span>
+        <span class="timeposi">
+            <input id="fakerstar" class="timefaker" type="datetime-local" value="123" placeholder="6666">
+            <span class="timefaker plar">请选择开始时间</span>
+        </span>
+    </li>
 </ul>
 <div id="div0" style="background-color: white;display: none;">666</div>
 <script type="text/javascript" src="../js/zepto.min.js" charset="gbk"></script>
