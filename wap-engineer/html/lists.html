@@ -9,29 +9,58 @@
     <link href="../css/engineerLogin.css" rel="stylesheet" type="text/css">
     <link rel="icon" href="http://www.xgo.cn/images/icon.png">
     <style>
-        h1{font-size: 40px;}
-        li{    border-bottom: 1px solid black;}
+        .con_head{position: relative;height: 1.2rem;line-height: 1.2rem;background-color: #45b87a;font-size: 0.453333rem;color: white;border-bottom: 0.02666rem solid #60cd8d;text-align: center;}
+        .con_head button{position: absolute;top: 0.21333rem;right: 0.26666rem;color: #45b87a;font-size: 0.3333rem;border-radius: 0.05333rem;background-color: white;padding: 0.18666rem 0.506666rem;}
+        .enginner_id{position: relative;background-color: #45b87a;font-size: 0.42666rem;color: white;border-bottom: 0.02666rem solid #60cd8d;padding: 0.24rem 0.26666rem;}
+        .enginner_id .ul_data{float: left;margin-top: 0.266666rem;margin-left: 0.18666rem;}
+        .enginner_id .ul_data .name{font-size: 0.346666rem;}
+        .enginner_id .img{float: left;width: 1.62666rem;}
+        .enginner_id .ul_data span{display: inline-block;margin-right: 0.05333rem;margin-left: 0.1066rem;width:0.24rem;height:0.32rem;background: url("../img/loc-piont.png");background-size:0.24rem 0.32rem; }
+        .num_data{background-color: white;font-size: 0;    white-space: nowrap;overflow: hidden;text-align: center;margin-bottom: 0.26666rem;}
+        .num_data span{display: inline-block;width: 50%;}
+        .num_data span .num{font-size: 0.453333rem;color:#55b87b;margin-top: 0.213333rem;}
+        .num_data .border{border-right: 1px solid #ececec;}
+        .num_data span .text{font-size:0.34666rem;color: #999;margin-bottom: 0.213333rem;}
+        .list_name{background-color: white;font-size: 0;    display: table;width: 100%;border-bottom: 0.026666rem solid #e0e0e0;}
+        .list_name li{display: table-cell;font-size:0.4rem;padding: 0.34666rem 0;text-align: center;}
+        .list_name .choice{color: #54b77a;    border-bottom: 3px solid #54b87a;}
+        .main_lists{font-size: 0.4rem;background-color: white;}
+        .main_lists li{padding: 0.32rem 0.26666rem;}
+        .timefaker{width:3.866rem;height: 0.8266rem;background-color: #f9f9f9;color: #989898;}
     </style>
 </head>
 <body>
-<ul id="ul0">
-    <li><h1>1</h1></li>
-    <li><h1>2</h1></li>
-    <li><h1>3</h1></li>
-    <li><h1>4</h1></li>
-    <li><h1>5</h1></li>
-
-    <li><h1>6</h1></li>
-    <li><h1>7</h1></li>
-    <li><h1>8</h1></li>
-    <li><h1>9</h1></li>
-    <li><h1>10</h1></li>
-
-    <li><h1>11</h1></li>
-    <li><h1>12</h1></li>
-    <li><h1>13</h1></li>
-    <li><h1>14</h1></li>
-    <li><h1>15</h1></li>
+<div class="con_head">
+    <span>修狗工程师系统</span>
+    <button>退出</button>
+</div>
+<div class="enginner_id">
+    <img class="img" src="../img/eng-head.png" />
+    <ul class="ul_data">
+        <li class="name">齐岩</li>
+        <li>qiyan6689 <span></span>邢台维修中心</li>
+    </ul>
+    <div class="clearfix"></div>
+</div>
+<div class="num_data">
+    <span class="border">
+        <div class="num">150</div>
+        <div class="text">待处理订单</div>
+    </span>
+    <span class="">
+        <div class="num">300</div>
+        <div class="text">已完结订单</div>
+    </span>
+</div>
+<ul class="list_name">
+    <li class="choice">已派单</li>
+    <li>待上门</li>
+    <li>维修中</li>
+    <li>维修完成</li>
+    <li>服务完成</li>
+</ul>
+<ul class="main_lists">
+    <li>上门时间 <input class="timefaker" type="datetime-local" value="123"></li>
 </ul>
 <div id="div0" style="background-color: white;display: none;">666</div>
 <script type="text/javascript" src="../js/zepto.min.js" charset="gbk"></script>
@@ -45,7 +74,7 @@
         if ($(window).scrollTop() >= $(document).height() - $(window).height() && $("#div0").css("display")==="none") {
             $("#div0").show();
             setTimeout(function () {
-                $("#ul0").append("<li><h1>"+Math.random()+"</h1></li>");
+                /*$("#ul0").append("<li><h1>"+Math.random()+"</h1></li>");*/
                 $("#div0").hide();
             },3000);
 
