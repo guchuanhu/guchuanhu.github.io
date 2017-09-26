@@ -25,10 +25,10 @@
         .list_name li{display: table-cell;font-size:0.4rem;padding: 0.34666rem 0;text-align: center;}
         .list_name .choice{color: #54b77a;    border-bottom: 3px solid #54b87a;}
         .main_lists{font-size: 0.4rem;background-color: white;}
-        .main_lists li{padding: 0.32rem 0.26666rem;font-size: 0.4rem;}
-        .timefaker{width:3.566rem;height: 0.8266rem;background-color: #f9f9f9;color: #989898;font-size: 0.4rem;}
+        .main_lists li{padding: 0.32rem 0.26666rem;font-size: 0.4rem;white-space: nowrap;}
+        .timefaker{    width: 4.2rem;transform: scaleX(.9);height: 0.8266rem;background-color: #f9f9f9;color: #989898;font-size: 0.2rem;}
         .timeposi{position: relative;font-size: 0;}
-        .timeposi .plar{display: inline-block;line-height: 0.8266rem;position: absolute;left: 0;box-sizing: border-box;padding-left: 0.12rem;width: 3rem;font-size: 0.4rem;}
+        .timeposi .plar{display: inline-block;line-height: 0.8266rem;position: absolute;left: 0;box-sizing: border-box;padding-left: 0.12rem;width: 3.2rem;font-size: 0.4rem;}
     </style>
 </head>
 <body>
@@ -64,13 +64,11 @@
 <ul class="main_lists">
     <li>
         <span>上门时间</span>
-        &nbsp;
-        <label class="timeposi">
+        <label class="timeposi" style="left: -0.16rem;">
             <input id="fakerstar" class="timefaker" type="datetime-local">
             <span id="fakerstarplar" class="timefaker plar">请选择开始时间</span>
         </label>
-        &nbsp;
-        <label class="timeposi">
+        <label class="timeposi" style="left: -0.3733rem;">
             <input id="fakerstarbor" class="timefaker" type="datetime-local">
             <span id="fakerstarborplar" class="timefaker plar">请选择结束时间</span>
         </label>
