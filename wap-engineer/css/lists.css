@@ -1,5 +1,8 @@
 html{height: 100%;}
 body{height: 100%;overflow: hidden;}
+a:visited {
+    color: white;
+}
 .static{height: 6.56rem;position: relative;z-index: 1;background: #efeff4;}
 .static_fix_hei{height: 1.2rem;}
 .hot{height: 100%;overflow-y: scroll;padding-top: 6.56rem;box-sizing: border-box;position: relative;top: -6.56rem;}
