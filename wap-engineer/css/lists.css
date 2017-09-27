@@ -1,7 +1,9 @@
 html{height: 100%;}
 body{height: 100%;overflow: hidden;}
 .static{height: 6.56rem;position: relative;z-index: 1;background: #efeff4;}
+.static_fix_hei{height: 1.2rem;}
 .hot{height: 100%;overflow-y: scroll;padding-top: 6.56rem;box-sizing: border-box;position: relative;top: -6.56rem;}
+.hot_fix_posi{padding-top: 1.2rem;top: -1.2rem;}
 .con_head{position: relative;height: 1.2rem;line-height: 1.2rem;background-color: #45b87a;font-size: 0.453333rem;color: white;border-bottom: 0.02666rem solid #60cd8d;text-align: center;}
 .con_head button{position: absolute;top: 0.21333rem;right: 0.26666rem;color: #45b87a;font-size: 0.3333rem;border-radius: 0.05333rem;background-color: white;padding: 0.18666rem 0.506666rem;}
 .enginner_id{position: relative;background-color: #45b87a;font-size: 0.42666rem;color: white;border-bottom: 0.02666rem solid #60cd8d;padding: 0.24rem 0.26666rem;}
@@ -19,6 +21,7 @@ body{height: 100%;overflow: hidden;}
 .list_name .choice{color: #54b77a;    border-bottom: 3px solid #54b87a;}
 .main_lists{font-size: 0.4rem;background-color: white;overflow: hidden;}
 .main_lists li{padding: 0.32rem 0.26666rem;font-size: 0.4rem;white-space: nowrap;border-bottom: 0.02666rem solid #ececec;}
+.main_list_title{background-color: #f5f5f5;    color: #989898;}
 .timefaker{    width: 4.2rem;transform: scaleX(.9);height: 0.8266rem;background-color: #f9f9f9;color: #989898;font-size: 0.32rem;}
 .timeposi{position: relative;font-size: 0;}
 .timeposi .plar{display: inline-block;line-height: 0.8266rem;position: absolute;left: 0;box-sizing: border-box;padding-left: 0.12rem;width: 3.2rem;font-size: 0.4rem;}
@@ -31,3 +34,22 @@ body{height: 100%;overflow: hidden;}
 .now{color: #e50101;border-color: #e50101;}
 #gifForlist{text-align: center;background-color: #f5f5f5;display: none;}
 #gifForlist img{width: 0.426666rem;}
+.lists_detail{box-sizing: border-box;display: table;width: 100%;}
+.lists_detail .right{display: table-cell;text-align: right;}
+.lists_detail .left{display: table-cell;color: #666;}
+.money_color{color: #d32c1f;}
+.money{
+    color: #d32c1f;
+    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAZCAYAAAA8CX6UAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA4RpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTM4IDc5LjE1OTgyNCwgMjAxNi8wOS8xNC0wMTowOTowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo2YTE3N2ExZC05N2I4LTdhNDQtYmM0MC1jM2E4ZGM0NzBkYTEiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6RTdCRTZFQzE5QTVCMTFFNzgyMTM4RkZBRTBFRjU2MUMiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6RTdCRTZFQzA5QTVCMTFFNzgyMTM4RkZBRTBFRjU2MUMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKFdpbmRvd3MpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MGZjNmQyNTAtMTQ4OS05MDQ0LThmMzktODVmYzZkNDFmYjIyIiBzdFJlZjpkb2N1bWVudElEPSJhZG9iZTpkb2NpZDpwaG90b3Nob3A6MjUzZDM2Y2ItYTFjYS0xMWU3LThhMTQtZTA3OGJlYmMwN2ZmIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+AUtt6gAAASlJREFUeNrUVNERgjAMpRwL4Kf+sQKOwAo6Ao6AI7gCjgAjsAKMgH/6qRtQk17qxV7aw7v+mLsATV5fH0lAaa2TGJYmkSzDyyNNL7Tud1pPazbelSrhdsDn7bKcraIcvAHvfhDR0Z7crLBGwJ6DP8E1eLNCTUNY3JObOttiQ6DmyQAJP7S2YhLeNUjMBGgDRC1hZhuTiCoCoRcCScHylZeIwAMBB4FIzPmI+Kklb7dPrUjk1GFksdFXP+RQ5qKURPakGTlRCAleMLAbiSjxfWtsHGbWzVrCfikCEI576WDqz+SCGvCrk59AYY8cGQtW9tsJmKuoJ/e/GntF06kQBjmi/UaiEfFidytq5Br+v45u1wrWIW52KPdCDufqFpyj/y923K7FsLcAAwDcNN/ou0c8CwAAAABJRU5ErkJggg==") no-repeat;
+    background-size: 0.24rem;
+    display: inline-block;
+    padding-left: 0.24rem;
+    background-position-y: 0.1rem;
+}
+.inline_btn{margin-left: 0.3rem;font-size: 0.3333rem;border-radius: 0.05333rem;background-color: #45b87a;color: white;padding: 0.18666rem 0.506666rem;}
+.distab{display: table;width: 100%;}
+.text_area{height:1.84rem;width: 100%;border: 0.026666rem solid #ececec;margin-top: 0.32rem;font-size: 0.4rem;}
+.lists_detail_btn{box-sizing: border-box;display: table;width: 100%;background-color: #f5f5f5;}
+.lists_detail_btn .right{display: table-cell;text-align: center;}
+.lists_detail_btn .left{display: table-cell;text-align: center;}
+.lists_detail_btn button{width: 4.4rem;height:1.0666rem;line-height:1.0666rem;background-color: #45b87a;color: white;font-size: 0.4266rem;margin-top: 0.133333rem;margin-bottom: 0.746666rem;}
