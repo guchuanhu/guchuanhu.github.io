@@ -25,7 +25,7 @@ a:visited {
 .main_lists{font-size: 0.4rem;background-color: white;overflow: hidden;}
 .main_lists li{padding: 0.32rem 0.26666rem;font-size: 0.4rem;white-space: nowrap;border-bottom: 0.02666rem solid #ececec;}
 .main_list_title{background-color: #f5f5f5;    color: #989898;}
-.timefaker{    width: 4.2rem;transform: scaleX(.9);height: 0.8266rem;background-color: #f9f9f9;color: #989898;font-size: 0.32rem;    border: 1px solid;}
+.timefaker{    width: 4.2rem;transform: scaleX(.9);height: 0.8266rem;background-color: #f9f9f9;color: #989898;font-size: 0.32rem;}
 .timeposi{position: relative;font-size: 0;}
 .timeposi .plar{display: inline-block;line-height: 0.8266rem;position: absolute;left: 0;box-sizing: border-box;padding-left: 0.12rem;width: 3.2rem;font-size: 0.4rem;}
 .list_title{width: 50%;display: inline-block;text-align: center;color: #989898;}
