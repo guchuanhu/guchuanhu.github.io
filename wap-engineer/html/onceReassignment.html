@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="viewport" content="width=device-width,user-scalable=no,maximum-scale=1,minimum-scale=1">
+    <title>登陆 - 修狗工程师后台系统</title>
+    <link href="../css/engineerLogin.css" rel="stylesheet" type="text/css">
+    <link href="../css/lists.css" rel="stylesheet" type="text/css">
+    <link rel="icon" href="http://www.xgo.cn/images/icon.png">
+</head>
+<body>
+<div class="static static_fix_hei">
+    <div class="con_head">
+        <span>订单号：s2017090571964</span>
+    </div>
+</div>
+
+<div class="hot hot_fix_posi">
+    <ul id="alists" class="main_lists">
+        <li class="lists_detail">
+            <div class="distab">
+                <span class="left">
+                    改派工程师
+                    <select class="mode_select">
+                        <option>请选择</option>
+                        <option>王麻子</option>
+                        <option>张三丰</option>
+                    </select>
+                </span>
+            </div>
+            <div class="distab">
+                <textarea class="text_area" placeholder="请输入备注"></textarea>
+            </div>
+        </li>
+
+        <li class="lists_detail_btn">
+            <span class="left"><button>接单</button></span>
+            <span class="right"><button>返回订单列表</button></span>
+        </li>
+    </ul>
+</div>
+
+<div class="mask" style="display: none;">
+    <div class="popup">
+        <div class="title_pop">
+            请选择城市
+            <span class="pop_close"></span>
+        </div>
+        <div class="pop_ul">
+            <label>
+                <input name="city" type="radio"><span></span>
+                北京
+            </label>
+            <label>
+                <input name="city" type="radio"><span></span>
+                上海
+            </label>
+            <label>
+                <input name="city" type="radio"><span></span>
+                南京
+            </label>
+        </div>
+    </div>
+</div>
+
+<div class="mask" style="display: none;">
+    <div class="popup_ok">
+        <span class="pop_ok"></span>
+        接单成功！
+    </div>
+
+</div>
+
+
+<script type="text/javascript" src="../js/zepto.min.js" charset="gbk"></script>
+<script src="../js/rem.js"></script>
+<script type="text/javascript" src="../js/lists.js" charset="gbk"></script>
+<script>
+</script>
+</body>
+</html>
