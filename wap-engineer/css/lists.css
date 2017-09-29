@@ -68,7 +68,7 @@ a:visited {
     background-size: 0.45333rem;
     display: inline-block;
 }
-.pop_ul{font-size: 0;text-align: left;}
+.pop_ul{font-size: 0;text-align: left;max-height: 4rem;overflow: auto;}
 .pop_ul label{display: inline-block;width: 50%;font-size: 0.4rem;padding-top:0.50666rem;padding-bottom: 0.13333rem;}
 label input[type="radio"] {
     appearance: none;
@@ -104,4 +104,14 @@ label input[type="radio"] + span {
     background-size:  0.5333rem,0.4rem;
 }
 .marginright10{margin-right: 0.26666rem;}
-.mode_select{width: 125px;height: 32px;font-size: 15px;padding-left: 5px;color: #989898;}
+.prewidth{width: 100%!important;}
+
+.mode_select{width: 3.33333rem;height: 0.85333rem;font-size: 0.4rem;padding-left: 0.13333rem;color: #989898;}
+.head_right{position: absolute;right: 0.32rem;}
+.address_sty{text-align: right;margin-top: 0.13333rem;}
+.main_lists .btn_fix{padding-top: 0;margin-top: -0.1866rem;padding: 0;height: 1.0666rem;}
+.main_lists .btn_fix_sty{    margin: 0;width: 100%;height: 1.0666rem;line-height: 1.0666rem;background-color: white;color: #45b87a;font-size: 0.4266rem;}
+#fix_btn{position: fixed;bottom: 0;width: 100%;}
+.code_right{    font-size: 0.4rem;text-align: right;}
+
+

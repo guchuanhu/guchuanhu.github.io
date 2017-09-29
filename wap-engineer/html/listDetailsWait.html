@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="gbk">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="viewport" content="width=device-width,user-scalable=no,maximum-scale=1,minimum-scale=1">
+    <title>登陆 - 修狗工程师后台系统</title>
+    <link href="../css/engineerLogin.css" rel="stylesheet" type="text/css">
+    <link href="../css/lists.css" rel="stylesheet" type="text/css">
+    <link rel="icon" href="http://www.xgo.cn/images/icon.png">
+</head>
+<body>
+<div class="static static_fix_hei">
+    <div class="con_head">
+        <span>订单号：s2017090571964</span>
+        <span class="head_right">待改派</span>
+    </div>
+</div>
+
+<div class="hot hot_fix_posi">
+    <ul id="alists" class="main_lists">
+        <li class="main_list_title">
+            <span>手机信息</span>
+        </li>
+        <li class="lists_detail">
+            <span class="left">品牌</span>
+            <span class="right">华为</span>
+        </li>
+        <li class="lists_detail">
+            <span class="left">型号</span>
+            <span class="right">N8</span>
+        </li>
+        <li class="lists_detail">
+            <span class="left">颜色</span>
+            <span class="right">白</span>
+        </li>
+        <li class="lists_detail">
+            <span class="left">imei</span>
+            <span class="right"><input type="text" placeholder="请输入imei码" style="text-align: right;"></span>
+        </li>
+
+        <li class="main_list_title">
+            <span>故障信息</span>
+        </li>
+        <li class="lists_detail">
+            <span class="left">故障1</span>
+            <span class="right">开机问题-自动重启</span>
+        </li>
+        <li class="lists_detail">
+            <span class="left">方案</span>
+            <span class="right">升级／<span class="money">52</span></span>
+        </li>
+        <li class="lists_detail">
+            <span class="left">故障2</span>
+            <span class="right">屏幕问题-外屏</span>
+        </li>
+        <li class="lists_detail">
+            <span class="left">方案</span>
+            <span class="right">换屏／<span class="money">89</span></span>
+        </li>
+        <li class="lists_detail">
+            <span class="right money_color">定金金额：<span class="money">1456</span></span>
+        </li>
+
+        <li class="main_list_title">
+            <span>用户信息</span>
+        </li>
+        <li class="lists_detail">
+            <span class="left">姓名</span>
+            <span class="right">张三</span>
+        </li>
+        <li class="lists_detail">
+            <span class="left">电话</span>
+            <span class="right">13489568956<a class="inline_btn" href="tel:13489568956">拨号</a></span>
+        </li>
+        <li class="lists_detail">
+            <div class="distab">
+                <span class="left">住址信息</span>
+                <span class="right">
+                    <span class="marginright10">河北</span><span class="marginright10">石家庄</span><span>杜家县</span>
+                </span>
+            </div>
+            <div class="distab address_sty">
+                三里屯二里路一号楼零栋
+            </div>
+        </li>
+        <li class="lists_detail">
+            <span class="left">上门时间</span>
+            <span class="right">
+                <span>2017-09-08 14:20</span>
+            </span>
+        </li>
+        <li class="lists_detail">
+            <span class="left">使用零件</span>
+            <span class="right">123123123</span>
+        </li>
+        <li class="lists_detail">
+            <span class="left">工程师</span>
+            <span class="right">李师傅</span>
+        </li>
+        <li class="lists_detail">
+            <div class="distab">
+                <span class="left">已核实备注</span>
+                <span class="right">
+                    无
+                </span>
+            </div>
+        </li>
+        <li class="lists_detail">
+            <div class="distab">
+                <span class="left">接单备注</span>
+                <span class="right">
+                    无
+                </span>
+            </div>
+        </li>
+        <li class="lists_detail">
+            <div class="distab">
+                <span class="left">开始维修备注</span>
+                <span class="right">
+                    无
+                </span>
+            </div>
+        </li>
+        <li class="lists_detail">
+            <div class="distab">
+                <span class="left">维修完成备注</span>
+                <span class="right">
+                    无
+                </span>
+            </div>
+        </li>
+        <li class="lists_detail">
+            <div class="distab">
+                <span class="left">改派备注</span>
+                <span class="right">
+                    今天明天
+                </span>
+            </div>
+        </li>
+
+        <li class="lists_detail_btn">
+            <span class="left"><button>不接收改派</button></span>
+            <span class="right"><button>接收改派</button></span>
+        </li>
+
+        <li class="lists_detail_btn btn_fix">
+            <span id="fix_btn" class="left"><button class="btn_fix_sty">返回订单列表</button></span>
+        </li>
+    </ul>
+</div>
+
+<div class="mask" style="display: none;">
+    <div class="popup">
+        <div class="title_pop">
+            请选择城市
+            <span class="pop_close"></span>
+        </div>
+        <div class="pop_ul">
+            <label>
+                <input name="city" type="radio"><span></span>
+                北京
+            </label>
+            <label>
+                <input name="city" type="radio"><span></span>
+                上海
+            </label>
+            <label>
+                <input name="city" type="radio"><span></span>
+                南京
+            </label>
+        </div>
+    </div>
+</div>
+
+<div class="mask" style="display: none;">
+    <div class="popup_ok">
+        <span class="pop_ok"></span>
+        接单成功！
+    </div>
+
+</div>
+
+
+<script type="text/javascript" src="../js/zepto.min.js" charset="gbk"></script>
+<script src="../js/rem.js"></script>
+<script type="text/javascript" src="../js/lists.js" charset="gbk"></script>
+<script type="text/javascript" src="../js/iosFix.js" charset="gbk"></script>
+<script>
+</script>
+</body>
+</html>
