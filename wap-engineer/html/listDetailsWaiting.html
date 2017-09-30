@@ -97,7 +97,10 @@
         </li>
         <li class="lists_detail">
             <span class="left">使用零件</span>
-            <span class="right"><input class="code_right" type="text" value="123321123"></span>
+            <span class="right">
+                <input class="code_right" type="text" value="123321123">
+                <span class="ipt_phone"></span>
+            </span>
         </li>
         <li class="lists_detail">
             <span class="left">工程师</span>
@@ -123,6 +126,25 @@
             <span id="fix_btn" class="left"><button class="btn_fix_sty">返回订单列表</button></span>
         </li>
     </ul>
+</div>
+
+<div class="mask" style="display: none;">
+    <div class="popup">
+        <div class="title_pop">
+            请选择支付方式
+            <span class="pop_close"></span>
+        </div>
+        <div class="pop_ul textcenter">
+            <label>
+                <img class="pop_img" src="../img/022.gif">
+                微信
+            </label>
+            <label>
+                <img class="pop_img" src="../img/022.gif">
+                支付宝
+            </label>
+        </div>
+    </div>
 </div>
 
 <div class="mask" style="display: none;">
@@ -162,16 +184,6 @@
 <script src="../js/rem.js"></script>
 <script type="text/javascript" src="../js/lists.js" charset="gbk"></script>
 <script type="text/javascript" src="../js/iosFix.js" charset="gbk"></script>
-<script>
-    wx.scanQRCode({
-        needResult: 0, // 默认为0，扫描结果由微信处理，1则直接返回扫描结果，
-        scanType: ["qrCode","barCode"], // 可以指定扫二维码还是一维码，默认二者都有
-        success: function (res) {
-            var result = res.resultStr; // 当needResult 为 1 时，扫码返回的结果
-        }
-    });
-
-</script>
 <script>
 </script>
 </body>

@@ -5,10 +5,8 @@
     var remCalc = {};
     var docEl = win.document.documentElement,
         tid;
-    console.log(docEl);
 
     function refreshRem() {
-        console.log(docEl.getBoundingClientRect());
         var width = docEl.getBoundingClientRect().width;
         if (width > 640) { width = 640 }
         var rem = width / 10;
