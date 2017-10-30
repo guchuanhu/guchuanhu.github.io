@@ -24,6 +24,7 @@
         .photo .photo_box{
             text-align: center;
             width: 50%;
+            height: 145px;
             float: left;
             margin-bottom: 20px;
         }
@@ -280,6 +281,9 @@
     $(document).on("touchmove",function(e) {
         if(!$(e.target).parents(".photo_container").length){
             e.preventDefault();
+        }else{
+            console.log($(".photo_container").scrollTop())
+            console.log($(".photo_container").height())
         }
 
     });
