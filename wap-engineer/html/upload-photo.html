@@ -1,0 +1,284 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta content="telephone=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width,user-scalable=no,maximum-scale=1,minimum-scale=1">
+    <title>苹果 iPhone 6 Plus订单详情 - 修狗</title>
+    <link href="../css/engineerLogin.css" rel="stylesheet" type="text/css">
+    <style>
+        .photo{
+            box-sizing: border-box;
+            position: fixed;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            padding: 10px 20px 150px 20px;
+        }
+        .photo .photo_container{
+            height: 100%;
+            overflow: scroll;
+        }
+        .photo .photo_box{
+            text-align: center;
+            width: 50%;
+            float: left;
+            margin-bottom: 20px;
+        }
+        .photo .photo_box .photo_item .photo_img{
+            width: 100%;
+            height: 100%;
+        }
+        .photo .photo_box .photo_item .photo_close{
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            width: 11px;
+            height: 11px;
+            cursor: pointer;
+            background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAALCAYAAAB7/H1+AAAAjklEQVQokX2SwQ3AIAwDDUt0LNboo+PwYYyu0oFKHxUSGDv5OcInkyS11jr+SvDVAeA8HgDAW6p9m++rA0Bms4Mqc9TPlJQNs05zUobP+i01jcQKvkBnE8MYOhJvZgeN4FufPAyxS+IFsmZwNOOlohkz2H0/vAo3lgFWUAlXULnQIOkGd0kV3F2Fg0uo6n+3/lQxxbEqbwAAAABJRU5ErkJggg==") no-repeat;
+        }
+        .photo .photo_box .photo_item{
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            height: 120px;
+            width: 120px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAQCAYAAAAbBi9cAAABd0lEQVQ4jZ2RMU8bQRCF3+xYMgglZdJCEfEvcGNRpklpURHfWhfJDSKylIbKcu3icrNXuKDkHyCEZIkfQYQoKGlJQVzMDo0tWec9BXjl0/vezOwSGhRCmJhZvu4RUZFl2aiJ2ZCIjEIIF4nyCxH5mWIcAMxms621cA9AT1V/1MNL7ziE8HXlrVgSkTMAOYC/q3Ln3HG/379OTQ4hdM2sAhCX1gcz+00i8m+xWHwaDodP/z96U9Pp9GO73X4kETHvPdUDZVl+IaIJgO7SujKz0WAwuKtnRcRcakpRFPtEdANgzsx7qroLYE5EN0VR7KeYVspk5jERjbMsm65fUZblNjOPAXyrM8mNAHSdc+cbU1utCsBhCmgqerOaiq5ijEd1U1W/A7hMAck3AvDLzOYiYqp6DgDMfATgBEDn1Rt5729V9QBAh5kfmPkBQEdVD7z3t2/ZCHme/0Hid5rkADxXVfX5tUBdS/a5BeA0xngvIjvvKYoxwsyqF423k6zj7fPAAAAAAElFTkSuQmCC") no-repeat;
+            background-position: 45px 10px;
+            background-size: 30px;
+            background-color: #eee;
+        }
+        .photo .photo_box .photo_item .photo_photo{
+            box-sizing: border-box;
+            display: inline-block;
+            height: 100%;
+            width: 120px;
+            background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAQCAYAAAAbBi9cAAABd0lEQVQ4jZ2RMU8bQRCF3+xYMgglZdJCEfEvcGNRpklpURHfWhfJDSKylIbKcu3icrNXuKDkHyCEZIkfQYQoKGlJQVzMDo0tWec9BXjl0/vezOwSGhRCmJhZvu4RUZFl2aiJ2ZCIjEIIF4nyCxH5mWIcAMxms621cA9AT1V/1MNL7ziE8HXlrVgSkTMAOYC/q3Ln3HG/379OTQ4hdM2sAhCX1gcz+00i8m+xWHwaDodP/z96U9Pp9GO73X4kETHvPdUDZVl+IaIJgO7SujKz0WAwuKtnRcRcakpRFPtEdANgzsx7qroLYE5EN0VR7KeYVspk5jERjbMsm65fUZblNjOPAXyrM8mNAHSdc+cbU1utCsBhCmgqerOaiq5ijEd1U1W/A7hMAck3AvDLzOYiYqp6DgDMfATgBEDn1Rt5729V9QBAh5kfmPkBQEdVD7z3t2/ZCHme/0Hid5rkADxXVfX5tUBdS/a5BeA0xngvIjvvKYoxwsyqF423k6zj7fPAAAAAAElFTkSuQmCC") no-repeat;
+            background-position: 45px 10px;
+            background-size: 30px;
+            background-color: #eee;
+            color: #999;
+            padding: 45px 5px 2px 5px ;
+        }
+        .photo .photo_box .photo_item .photo_tile{
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background-color: rgba(0,0,0,.3);
+            color: #eee;
+        }
+        .photo .photo_box input{
+            display: none;
+        }
+        .photo .photo_box .photo_item .photo_details{
+            margin: 0 5px 2px 5px;
+            color: #999;
+        }
+        .photo .btn_sty{
+            margin-bottom: 20px;
+            width: 100%;
+            height: 44px;
+            color: #fff;
+            text-align: center;
+            background: #05bc74;
+            border-radius: 6px;
+            font-size: 14px;
+            border: 0 none;
+        }
+        .photo .footer{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+        .height_pre100{height: 100%;}
+    </style>
+</head>
+<body>
+<div class="photo">
+    <div class="photo_container">
+        <div class="photo_box">
+            <div class="photo_item">
+                <div style="display: none;">
+                    <img class="photo_img" src="../images/selected-icon.png">
+                    <span class="photo_close"></span>
+                    <label>
+                        <div class="photo_tile">重新上传</div>
+                        <input type="file">
+                    </label>
+                </div>
+
+                <label>
+                    <span class="photo_photo">接机时的损坏手机正面（屏幕面），揭开手机膜拍照</span>
+                    <input type="file">
+                </label>
+            </div>
+            <p>手机正面</p>
+        </div>
+        <div class="photo_box">
+            <div class="photo_item">
+                <div style="display: none;">
+                    <img class="photo_img" src="../images/selected-icon.png">
+                    <span class="photo_close"></span>
+                    <label>
+                        <div class="photo_tile">重新上传</div>
+                        <input type="file">
+                    </label>
+                </div>
+
+                <label>
+                    <span class="photo_photo">接机时的损坏手机背面（后壳面）</span>
+                    <input type="file">
+                </label>
+            </div>
+            <p>手机背面</p>
+        </div>
+        <div class="photo_box">
+            <div class="photo_item">
+                <div style="display: none;">
+                    <img class="photo_img" src="../images/selected-icon.png">
+                    <span class="photo_close"></span>
+                    <label>
+                        <div class="photo_tile">重新上传</div>
+                        <input type="file">
+                    </label>
+                </div>
+
+                <label>
+                    <span class="photo_photo">修好后，开机显示出IMEI码的手机正面（屏幕面）+维修方维修工单（有客户签字确认的原件）</span>
+                    <input type="file">
+                </label>
+            </div>
+            <p>显示出IMEI</p>
+        </div>
+        <div class="photo_box">
+            <div class="photo_item">
+                <div style="display: none;">
+                    <img class="photo_img" src="../images/selected-icon.png">
+                    <span class="photo_close"></span>
+                    <label>
+                        <div class="photo_tile">重新上传</div>
+                        <input type="file">
+                    </label>
+                </div>
+
+                <label>
+                    <span class="photo_photo">客户身份证照片（正面）</span>
+                    <input type="file">
+                </label>
+            </div>
+            <p>客户身份证正面</p>
+        </div>
+        <div class="photo_box">
+            <div class="photo_item">
+                <div style="display: none;">
+                    <img class="photo_img" src="../images/selected-icon.png">
+                    <span class="photo_close"></span>
+                    <label>
+                        <div class="photo_tile">重新上传</div>
+                        <input type="file">
+                    </label>
+                </div>
+
+                <label>
+                    <span class="photo_photo">客户身份证照片（反面）</span>
+                    <input type="file">
+                </label>
+            </div>
+            <p>客户身份证背面</p>
+        </div>
+        <div class="photo_box">
+            <div class="photo_item">
+                <div style="display: none;">
+                    <img class="photo_img" src="../images/selected-icon.png">
+                    <span class="photo_close"></span>
+                    <label>
+                        <div class="photo_tile">重新上传</div>
+                        <input type="file">
+                    </label>
+                </div>
+
+                <label>
+                    <span class="photo_photo">客户身份证照片（反面）</span>
+                    <input type="file">
+                </label>
+            </div>
+            <p>客户银行卡照片</p>
+        </div>
+        <div class="photo_box">
+            <div class="photo_item">
+                <div style="display: none;">
+                    <img class="photo_img" src="../images/selected-icon.png">
+                    <span class="photo_close"></span>
+                    <label>
+                        <div class="photo_tile">重新上传</div>
+                        <input type="file">
+                    </label>
+                </div>
+
+                <label>
+                    <span class="photo_photo">损坏项目多项，每项损坏零部件均需拍照</span>
+                    <input type="file">
+                </label>
+            </div>
+            <p>损坏项目（多张）</p>
+        </div>
+        <div class="photo_box">
+            <div class="photo_item">
+                <div style="display: none;">
+                    <img class="photo_img" src="../images/selected-icon.png">
+                    <span class="photo_close"></span>
+                    <label>
+                        <div class="photo_tile">重新上传</div>
+                        <input type="file">
+                    </label>
+                </div>
+
+                <label>
+                    <span class="photo_photo">接机时的损坏手机正面（屏幕面），揭开手机膜拍照</span>
+                    <input type="file">
+                </label>
+            </div>
+            <p>&nbsp;</p>
+        </div>
+        <div class="photo_box">
+            <div class="photo_item">
+                <div style="display: none;">
+                    <img class="photo_img" src="../images/selected-icon.png">
+                    <span class="photo_close"></span>
+                    <label>
+                        <div class="photo_tile">重新上传</div>
+                        <input type="file">
+                    </label>
+                </div>
+
+                <label>
+                    <span class="photo_photo">接机时的损坏手机正面（屏幕面），揭开手机膜拍照</span>
+                    <input type="file">
+                </label>
+            </div>
+            <p>&nbsp;</p>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+
+    <div class="footer">
+        <button class="btn_sty">提交照片</button>
+        <button class="btn_sty">返回维修中</button>
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="../js/zepto.min.js"></script>
+<script>
+    $(document).on("touchmove",function(e) {
+        e.preventDefault();
+    });
+</script>
+</html>
