@@ -278,7 +278,10 @@
 <script type="text/javascript" src="../js/zepto.min.js"></script>
 <script>
     $(document).on("touchmove",function(e) {
-        e.preventDefault();
+        if(!$(e.target).parents(".photo_container").length){
+            e.preventDefault();
+        }
+
     });
 </script>
 </html>
