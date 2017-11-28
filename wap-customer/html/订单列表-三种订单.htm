@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<!-- saved from url=(0043)http://m.xgo.cn/order/list_17610176806.html -->
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=GBK">
+
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="viewport" content="width=device-width,user-scalable=no,maximum-scale=1,minimum-scale=1">
+    <title>订单列表</title>
+    <link href="../css/public.css" rel="stylesheet" type="text/css">
+    <link href="../css/lists.css" rel="stylesheet" type="text/css">
+    <link href="../css/payover.css" rel="stylesheet" type="text/css">
+
+
+
+
+    <style>
+        .float-lp{
+            float: left;
+            font-size: 14px;
+            color: #999;
+            margin-top: 2px;
+        }
+        .float-lp span{
+            color: #ff9600;
+        }
+        .btn-yn{
+            color: #666;
+            width: 80px;
+            height: 24px;
+            line-height: 24px;
+            text-align: center;
+            font-size: 14px;
+            border: 0;
+        }
+        .tea-box{
+            box-sizing: border-box;
+            width: 100%;
+            padding-left: 70px;
+        }
+        .tea-box textarea{
+            margin-top: 10px;
+            width: 100%;
+            border-color: #dfdfdf;
+        }
+        .bfmore{
+            text-align: center;
+            background-color: white;
+            height: 30px;
+            line-height: 30px;
+        }
+        .fak-btn {
+            color: #fff;
+            background: #01b06b;
+            border:0;
+        }
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+    <script src="../js/vue.min.js"></script>
+    <script src="../js/axios.min.js"></script>
+
+
+
+</head>
+<body id="threeLists">
+<div class="repair-way-item" v-for="item in lists">
+    <div class="repair-order-title clearfix">
+            <h5 v-cloak v-bind:class="item.orderType|tranListName 1">{{item.orderType|tranListName 0}}</h5>
+            <p v-cloak class="order-status">{{item.statusName}}</p>
+    </div>
+    <div class="repair-way-addr border-bm">
+        <div class="item clearfix">
+            <label>产品型号：</label>
+            <p>{{item.manuName}} {{item.spuName}}&nbsp;{{item.skuName}}</p>
+        </div>
+        <div class="item clearfix">
+                <label>故障描述：</label>
+                <p>{{item.repairModelName|rmn}}</p>
+        </div>
+    </div>
+    <div class="repair-way-addr">
+        <span v-if="item.orderType==='S'">
+            <div class="item clearfix">
+                <label>维修中心：</label>
+                <p>{{item.serverName}}</p>
+            </div>
+            <div class="item clearfix">
+                <label>上门时间：</label>
+                <p>{{item.doorTime===""?"暂无时间":item.doorTime}}</p>
+            </div>
+            <div v-if="item.storeTime.length" class="item clearfix">
+                <label>下单时间：</label>
+                <p>{{item.storeTime}}</p>
+            </div>
+        </span>
+        <span v-if="item.orderType==='D'">
+            <div class="item clearfix">
+                <label>预约店铺：</label>
+                <p>{{item.serverName}}</p>
+            </div>
+            <div class="item clearfix">
+                    <label>店铺地址：</label>
+                    <p>{{item.serveraddress}}</p>
+            </div>
+            <div class="item clearfix">
+                <label>预约时间：</label>
+                <p>{{item.appyTime?item.appyTime:"暂无时间"}}</p>
+            </div>
+        </span>
+        <span v-if="item.orderType==='J'">
+            <div class="item clearfix">
+                <label>邮寄店铺：</label>
+                <p>{{item.serverName}}</p>
+            </div>
+            <div class="item clearfix">
+                <label>店铺地址：</label>
+                <p>{{item.serveraddress}}</p>
+            </div>
+        </span>
+
+        <div class="item clearfix">
+            <label>下单时间：</label>
+            <p>{{item.addTime}}</p>
+        </div>
+    </div>
+    <div v-if="item.orderType==='J'" class="repair-post-number" style="border-top: 1px solid #dfdfdf;margin: 0 -12px;padding: 5px 12px;">
+        <div class="repair-post-inner">
+            <label>快递单号：</label>
+
+            <span v-if="item.mailSn.length===0">
+                <input v-model="mailSn[$index]" type="text" value="">
+                <button v-on:click="submitMailSn(item,$index)" class="has-submit fak-btn">提交</button>
+            </span>
+
+            <span v-if="item.mailSn.length!==0">
+                <input type="text" disabled="true" value="{{item.mailSn}}">
+            </span>
+
+        </div>
+    </div>
+    <div v-if="item.policySn.length!==0" class="repair-order-detail clearfix">
+        <p>保单号：{{item.policySn}}</p>
+    </div>
+    <div v-if="item.reportSn.length!==0" class="repair-order-detail clearfix">
+        <p>备案号：{{item.reportSn}}</p>
+    </div>
+    <div class="repair-order-detail clearfix">
+        <p>imei：{{item.imeiSn}}</p>
+    </div>
+    <div class="repair-order-detail clearfix">
+        <p>订单号：{{item.orderSn}}</p>
+        <p class="total-price">总计：<span>￥{{item.price}}</span></p>
+    </div>
+    <div class="repair-confirm-btn clearfix">
+        <span>
+            <p v-if="item.status === '1010'" v-on:click="payItem()" class="enabled">支付</p>
+            <p v-if="item.status === '1020'" class="enabled disabled">已支付</p>
+            <span class="tip">检测后可完成支付</span>
+        </span>
+    </div>
+    <div v-if="item.status==='1030'" style="height: auto;" class="repair-order-detail clearfix">
+        <p>用户评价：</p>
+        <span  v-if="item.judgeScore === '0'">
+            <button v-if="!textShow" v-on:click="submit(false,item,1)" class="btn-yn">满意</button>
+            <button v-if="!textShow" v-on:click="textShow=true" class="btn-yn">不满意</button>
+            <div v-if="textShow" class="tea-box">
+                <textarea v-model="judgeContent[$index]"></textarea>
+                <p v-if="tipShow">必须满5字才能提交</p>
+                <button v-on:click="submit(true,item,2,$index)" class="btn-yn">提交</button>
+            </div>
+        </span>
+        <span  v-if="item.judgeScore !== '0'">
+            {{item.judgeContent}}
+        </span>
+    </div>
+</div>
+
+<div v-on:click="moreLists" class="bfmore">
+    <span v-if="showMore">点击加载更多订单</span>
+    <span v-if="!showMore">已经到底啦</span>
+</div>
+<script>
+    var app = new Vue({
+        el: '#threeLists',
+        data: {
+            message: 'Hello Vue!',
+            lists:[],
+            judgeContent:[],
+            mailSn:[],
+            page:1,
+            showMore:true,
+            textShow: false,
+            tipShow: false,
+            url:{
+                getLists:'http://localhost/get',
+                postMail:'http://localhost/post',
+                postJudge:'http://localhost/postJudge'
+            }
+        },
+        methods: {
+            submit: function (check,item,score,index) {
+                if(check&&this.$data.judgeContent[index].length<5){
+                    this.$data.tipShow = true;
+                    return false;
+                }
+
+                item.judgeScore = score;
+                item.judgeContent = !check?"满意！":this.$data.judgeContent[index];
+
+                axios({
+                    url: this.url.postJudge,
+                    method: 'post',
+                    data: {
+                        submitToken:item.submitToken,
+                        orderSn:item.orderSn,
+                        score:score,
+                        content:!check?"满意！":this.$data.judgeContent[index]
+                    },
+                    transformRequest: [function (data) {
+                        // Do whatever you want to transform the data
+                        let ret = ''
+                        for (let it in data) {
+                            ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
+                        }
+                        return ret
+                    }],
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    }
+                });
+            },
+            submitMailSn: function (item,index) {
+                item.mailSn = this.$data.mailSn[index];
+                axios({
+                    url: this.url.postMail,
+                    method: 'post',
+                    data: {
+                        submitToken:item.submitToken,
+                        orderSn:item.orderSn,
+                        serverId:item.serverId,
+                        postId:this.$data.mailSn[index]
+                    },
+                    transformRequest: [function (data) {
+                        // Do whatever you want to transform the data
+                        let ret = ''
+                        for (let it in data) {
+                            ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
+                        }
+                        return ret
+                    }],
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    }
+                });
+            },
+            moreLists: function () {
+                axios.get(this.url.getLists,{
+                    params:{
+                        mobile:this.getItem("mobile"),
+                        isChannel:this.getItem("isChannel"),
+                        page:app.$data.page
+                    }
+                })
+                        .then(function(response){
+                            if(response.data.sum-app.$data.page>=0){
+                                app.$data.lists = app.$data.lists.concat(response.data.data);
+                                app.$data.page++;
+                            }else{
+                                app.$data.showMore = false;
+                            }
+                        })
+                        .catch(function(err){
+                            console.log(err);
+                        });
+            },
+            getItem:function (item){
+                var one=location.search.indexOf(item);
+                if(one === -1){
+                    return '';
+                }
+                var star=location.search.indexOf("=",one)+1;
+                var end=location.search.indexOf("&",one);
+                if(end===-1){end=undefined}
+                return location.search.substring(star,end);
+            },
+            payItem: function () {
+                alert("付钱！")
+            }
+        },
+        filters: {
+            tranTime: function (date, fmt) {
+                date = new Date(date);
+                if (/(y+)/.test(fmt)) {
+                    fmt = fmt.replace(RegExp.$1, (date.getFullYear() + '').substr(4 - RegExp.$1.length));
+                }
+                let o = {
+                    'M+': date.getMonth() + 1,
+                    'd+': date.getDate(),
+                    'h+': date.getHours(),
+                    'm+': date.getMinutes(),
+                    's+': date.getSeconds()
+                };
+                for (let k in o) {
+                    if (new RegExp(`(${k})`).test(fmt)) {
+                        let str = o[k] + '';
+                        fmt = fmt.replace(RegExp.$1, (RegExp.$1.length === 1) ? str : ('00' + str).substr(str.length));
+                    }
+                }
+                return fmt;
+            },
+            tranListName: function (date,num) {
+                let obj = {
+                    J:["邮寄维修","post"],
+                    S:["上门维修","home"],
+                    D:["预约到店","store"]
+                }
+                return obj[date][num];
+            },
+            rmn: function (date,num) {
+                var str = "";
+                for(var i in date){
+                    if(date.hasOwnProperty(i)){
+                        str += date[i]+" ";
+                    }
+                }
+                return str;
+            }
+        }
+    });
+
+    app.moreLists();
+
+
+
+</script>
+
+</body>
+</html>

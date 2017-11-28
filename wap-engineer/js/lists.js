@@ -27,3 +27,10 @@ $('.hot').on("touchmove scroll",function () {
     }
 });
 
+
+var c="2017年10月16日 上午10:30";
+if(c.indexOf("年")!==-1){
+    c.replace("年","-").replace("月","-").replace("日","").replace("上午","").replace("下午","")
+}else if(c.indexOf("上午")!==-1){
+
+}
