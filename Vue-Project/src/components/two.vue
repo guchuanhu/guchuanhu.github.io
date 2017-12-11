@@ -19,7 +19,7 @@
         <td :style="td|bgColor" v-for="(td,ind) in tr" :key="ind" >{{td==0?null:td}}</td>
       </tr>
     </table><br />
-    <table id="control">
+    <table v-show="!isfulls" id="control">
         <tr><td></td><td @click='forLeftVertical(arr)' id="up">上</td><td></td></tr>
         <tr><td @keyup.left='forUpRow(arr,true)' @click='forUpRow(arr,true)' id="left">左</td><td></td><td @click='forDownRow(arr,true)' @keyup.right='forDownRow(arr,true)' id="right">右</td></tr>
         <tr><td></td><td @keyup.down='forRightVertical(arr)' @click='forRightVertical(arr)' id="down">下</td><td></td></tr>
@@ -222,7 +222,11 @@ export default {
             tsX = event.changedTouches[0].clientX;
             tsY = event.changedTouches[0].clientY;
         });
+        document.getElementById("fulltwo").addEventListener("touchmove",event=>{
+            event.preventDefault();
+        });
         document.getElementById("fulltwo").addEventListener("touchend",event=>{
+            //event.preventDefault();
             x = tsX-event.changedTouches[0].clientX;//负右正左
             y = tsY-event.changedTouches[0].clientY;//负下正上
             if(Math.abs(x)>Math.abs(y)){//横向
