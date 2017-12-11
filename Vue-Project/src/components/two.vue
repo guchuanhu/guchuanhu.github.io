@@ -334,7 +334,7 @@ export default {
     left: 0;
   }
 
-  .fulls table{
+  #fulltwo table{
       margin: auto;
   }
   .mask{

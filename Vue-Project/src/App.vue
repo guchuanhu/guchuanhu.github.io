@@ -26,12 +26,12 @@ export default {
   components: { menus,two },
   created(){
     
-    this.$http.get("/api/Order_Detail/AjaxOrder/",{params:{mobile:18335831710,page:3}}).then((response) => {
-      console.log(response.data)
-    });
-    this.$http.post("/api/Order_Detail/AjaxPost/",{submitToken:18335831710,orderSn:3,postId:3,serverId:3}).then((response) => {
-      console.log(response.data)
-    });
+    // this.$http.get("/api/Order_Detail/AjaxOrder/",{params:{mobile:18335831710,page:3}}).then((response) => {
+    //   console.log(response.data)
+    // });
+    // this.$http.post("/api/Order_Detail/AjaxPost/",{submitToken:18335831710,orderSn:3,postId:3,serverId:3}).then((response) => {
+    //   console.log(response.data)
+    // });
   }
 }
 </script>
