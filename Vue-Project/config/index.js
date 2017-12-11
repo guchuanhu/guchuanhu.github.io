@@ -3,6 +3,7 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
 
 const path = require('path')
+const httpProxy = require('http-proxy-middleware')
 
 module.exports = {
   dev: {
@@ -46,6 +47,15 @@ module.exports = {
     // In our experience, they generally work as expected,
     // just be aware of this issue when enabling this option.
     cssSourceMap: false,
+
+    proxyTable: {
+      '/api': {//这里是我配置的名字
+    　　　　target: 'http://m.xgo.hanjian.test.zol.com.cn/', //这个路径是我代理到本地tp框架里面
+    　　　　 changeOrigin: true, //开启代理
+     　　　　pathRewrite: { '^/api': '/api' }  //这里重写路径/run就代理到对应地址
+    
+    　　} 
+    }
   },
 
   build: {
