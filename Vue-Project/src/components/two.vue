@@ -21,8 +21,8 @@
     </table><br />
     <table v-show="!isfulls" id="control">
         <tr><td></td><td @click='forLeftVertical(arr)' id="up">上</td><td></td></tr>
-        <tr><td @keyup.left='forUpRow(arr,true)' @click='forUpRow(arr,true)' id="left">左</td><td></td><td @click='forDownRow(arr,true)' @keyup.right='forDownRow(arr,true)' id="right">右</td></tr>
-        <tr><td></td><td @keyup.down='forRightVertical(arr)' @click='forRightVertical(arr)' id="down">下</td><td></td></tr>
+        <tr><td @keyup.left='forUpRow(arr,true)' @click='forUpRow(arr,true)' id="left">左</td><td @keyup.down='forRightVertical(arr)' @click='forRightVertical(arr)' id="down">下</td><td @click='forDownRow(arr,true)' @keyup.right='forDownRow(arr,true)' id="right">右</td></tr>
+        
     </table>
     <h2 v-show="isfulls" @click="isfulls=!isfulls;mask=!mask" style="cursor:pointer;">退出全屏</h2>
     <h2 v-show="!isfulls" @click="mask=!mask" style="cursor:pointer;">结束游戏</h2>
@@ -94,8 +94,12 @@ export default {
           if(this.checkGameOk(this.$data.arr)){
               var firm = confirm(" 游戏结束！ \n \n 点击确定重新开始。 \n ");
               if(firm){
-                  setTimeout(function(){
-                      console.log("initGame(init)");
+                  setTimeout(()=>{
+                      this.isfulls = !this.isfulls;
+                      this.mask = !this.mask;
+                      this.score = 0;
+                    this.arrayMaker();
+                    this.randomForArr(this.arr,1);
                   },0);
               }
           }
@@ -272,11 +276,11 @@ export default {
   #control{
       margin: auto;
       width: 240px;
-      height: 240px;
+      height: 100px;
   }
   #control td{
       width:80px;
-      height:80px;
+      height:60px;
       text-align: center;
       font-size: 24px;
   }
